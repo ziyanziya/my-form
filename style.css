@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: var(--bg);
+    color: #111
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px
+}
+
+.card {
+    width: 100%;
+    max-width: 720px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06)
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 22px
+}
+
+.muted {
+    color: var(--muted);
+    margin-bottom: 12px
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-weight: 600
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e6e9ef;
+    border-radius: 8px;
+    font-size: 14px
+}
+
+textarea {
+    resize: vertical
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 12px
+}
+
+.status {
+    margin-top: 8px;
+    font-size: 14px
+}
+
+.status.ok {
+    color: green
+}
+
+.status.err {
+    color: #b00020
+}
+
+@media (max-width:600px) {
+    .card {
+        padding: 16px
+    }
+}
