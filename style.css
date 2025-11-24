@@ -6,7 +6,13 @@ body {
     margin: 0;
     font-family: Tahoma, Arial, sans-serif;
     background: var(--bg);
-    color: #111
+    color: #111;
+    background-image: url("Screenshot\ 2025-11-25\ 003059.jpg");
+    background-size: cover;
+    /* تجعل الصورة تملأ الشاشة */
+    background-repeat: no-repeat;
+    /* تمنع التكرار */
+    background-position: center;
 }
 
 .container {
@@ -20,7 +26,7 @@ body {
 .card {
     width: 100%;
     max-width: 720px;
-    background: var(--card);
+    background: #f0ffffdb;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06)
