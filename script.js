@@ -1,46 +1,45 @@
-// اضبط هذا المتغير إلى رابط الـ Apps Script (الـ Web App URL) الخاص بك
-const SCRIPT_URL = "PUT_YOUR_SCRIPT_URL_HERE"; // example: https://script.google.com/macros/s/AKfyc.../exec
+const scriptURL = "https://script.google.com/macros/s/AKfycbyDS3e2uJ1NpATq9OluedrQOsnGoUN5c_lxyurX5N6ddDTJrfKqP-b8Z06mju5q0s0L/exec";
 
-const form = document.getElementById('surveyForm');
-const status = document.getElementById('status');
+// حساب الفئة تلقائيًا
+document.getElementById("birthdate").addEventListener("change", function () {
+    const birthYear = new Date(this.value).getFullYear();
+    const categoryInput = document.getElementById("category");
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    status.textContent = '';
-    status.className = 'status';
+    let category = "";
 
-    const data = {};
-    new FormData(form).forEach((v, k) => data[k] = v.trim());
-
-    // تحقق بسيط
-    if (!data.email) {
-        status.textContent = 'الرجاء إدخال البريد الإلكتروني.';
-        status.classList.add('err');
-        return;
+    if (birthYear > 2014) {
+        category = "البراعم";
+    } else if (birthYear <= 2014 && birthYear >= 2011) {
+        category = "الأصاغر";
+    } else if (birthYear <= 2010 && birthYear >= 2005) {
+        category = "الأشبال";
+    } else {
+        category = "خارج التصنيف";
     }
 
-    try {
-        const resp = await fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
-        });
-
-        if (!resp.ok) throw new Error('المخدم رد بخطأ');
-        const json = await resp.json();
-
-        if (json.status && json.status === 'success') {
-            status.textContent = 'تم الإرسال بنجاح. شكراً لك!';
-            status.classList.add('ok');
-            form.reset();
-        } else {
-            status.textContent = json.error || 'حصل خطأ أثناء الإرسال.';
-            status.classList.add('err');
-        }
-
-    } catch (err) {
-        console.error(err);
-        status.textContent = 'فشل الاتصال. تأكد من رابط Apps Script وأنه منشور ويسمح بالوصول.';
-        status.classList.add('err');
-    }
+    categoryInput.value = category;
 });
+
+// إرسال البيانات إلى Google Sheet
+document.getElementById("myForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const data = {
+        fullname: document.getElementById("fullname").value,
+        birthdate: document.getElementById("birthdate").value,
+        school: document.getElementById("school").value,
+        category: document.getElementById("category").value
+    };
+
+    fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    alert("✔ تم إرسال معلوماتك بنجاح!");
+
+    document.getElementById("myForm").reset();
