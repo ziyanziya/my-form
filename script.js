@@ -3,7 +3,7 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
 
     const form = new FormData(this);
 
-    fetch("https://script.google.com/macros/s/AKfycbyMIk0DSqlEWHwyBaS90lK9ufg0yZ1Z_KZAv1V71GQxyG3XKAIdFCXfxxl4eFq6jkRB/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxqDEM0AsSREX7AX6AnITim6QtRt2ZgYPXt96oJcWmGH6QvkWKm3nYeDN10fEIPy17R/exec", {
         method: "POST",
         body: form
     })
@@ -17,3 +17,4 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
         console.error(err);
     });
 });
+
