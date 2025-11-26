@@ -1,40 +1,49 @@
+<!-- ملف index.html -->
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استمارة التسجيل</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>نموذج التسجيل</title>
 </head>
-
 <body>
-    <div class="container card">
-        <h2>استمارة التسجيل</h2>
+  <h2>نموذج التسجيل</h2>
+  <form id="myForm">
+    <label>الاسم الكامل:</label>
+    <input type="text" name="fullname" required><br><br>
 
-        <form id="myForm">
+    <label>تاريخ الميلاد:</label>
+    <input type="date" name="birthdate" required><br><br>
 
-            <label>اللقب و الاسم
-                <input type="text" name="fullname" id="fullname" required>
-            </label>
+    <label>المدرسة:</label>
+    <input type="text" name="school" required><br><br>
 
-            <label>تاريخ الازدياد
-                <input type="date" name="birthdate" id="birthdate" required>
-            </label>
+    <label>الفئة:</label>
+    <input type="text" name="category" required><br><br>
 
-            <label>المؤسسة
-                <input type="text" name="school" id="school" required>
-            </label>
+    <button type="submit">إرسال</button>
+  </form>
 
-            <!-- الفئة تُحسب تلقائيًا -->
-            <input type="hidden" name="category" id="category">
+  <script>
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
 
-            <button type="submit">إرسال</button>
-        </form>
-    </div>
+      const data = {
+        fullname: this.fullname.value,
+        birthdate: this.birthdate.value,
+        school: this.school.value,
+        category: this.category.value
+      };
 
-    <script src="script.js"></script>
+      // استدعاء دالة Apps Script مباشرة بدون مشاكل CORS
+      google.script.run.withSuccessHandler((res) => {
+        alert(res.message);
+        form.reset();
+      }).submitForm(data);
+    });
+  </script>
 
+  <!-- رابط لا غنى عنه لـ Apps Script HTML Service -->
+  <script src="https://apis.google.com/js/platform.js"></script>
 </body>
-
 </html>
