@@ -1,41 +1,19 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbyMIk0DSqlEWHwyBaS90lK9ufg0yZ1Z_KZAv1V71GQxyG3XKAIdFCXfxxl4eFq6jkRB/exec";
-
-// حساب الفئة تلقائيًا
-document.getElementById("birthdate").addEventListener("change", function () {
-    const birthYear = new Date(this.value).getFullYear();
-    let category = "";
-
-    if (birthYear > 2014) category = "البراعم";
-    else if (birthYear >= 2011) category = "الأصاغر";
-    else if (birthYear >= 2005) category = "الأشبال";
-    else category = "خارج التصنيف";
-
-    document.getElementById("category").value = category;
-});
-
-// إرسال البيانات
 document.getElementById("myForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const data = {
-        fullname: document.getElementById("fullname").value,
-        birthdate: document.getElementById("birthdate").value,
-        school: document.getElementById("school").value,
-        category: document.getElementById("category").value
-    };
+    const form = new FormData(this);
 
-    fetch(scriptURL, {
+    fetch("https://script.google.com/macros/s/AKfycbyMIk0DSqlEWHwyBaS90lK9ufg0yZ1Z_KZAv1V71GQxyG3XKAIdFCXfxxl4eFq6jkRB/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: form
     })
-    .then(() => {
-        alert("✔ تم إرسال معلوماتك بنجاح!");
-        document.getElementById("myForm").reset();
+    .then(res => res.text())
+    .then(data => {
+        alert("✔ تم إرسال البيانات بنجاح");
+        this.reset();
     })
     .catch(err => {
-        alert("❌ فشل الإرسال. تحقق من الرابط.");
-        console.log(err);
+        alert("❌ فشل الإرسال: تأكد من الرابط");
+        console.error(err);
     });
 });
-
