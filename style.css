@@ -1,95 +1,79 @@
-* {
-    box-sizing: border-box
-}
+        body {
+            position: relative;
+            font-family: monospace;
+            background-image: url(form.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: var(--bg);
-    color: #111;
-    background-image: url("Screenshot\ 2025-11-25\ 003059.jpg");
-    background-size: cover;
-    /* تجعل الصورة تملأ الشاشة */
-    background-repeat: no-repeat;
-    /* تمنع التكرار */
-    background-position: center;
-}
+        .container {
+            position: absolute;
+            right: 3%;
+            background: linear-gradient(250deg, #2f0a04, #eaefcc57);
+            padding: 2%;
+            border-radius: 15px;
+        }
 
-.container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px
-}
+        .wrapper {
+            width: 90%;
+            max-width: 420px;
+            margin: auto;
+        }
 
-.card {
-    width: 100%;
-    max-width: 720px;
-    background: #f0ffffdb;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06)
-}
+        h2 {
+            color: #e9f7ff;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
 
-h1 {
-    margin: 0 0 6px;
-    font-size: 22px
-}
+        label {
+            display: block;
+            color: #e9f7ff;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
 
-.muted {
-    color: var(--muted);
-    margin-bottom: 12px
-}
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e9f7ff;
+            font-size: 1rem;
+            outline: none;
+        }
 
-label {
-    display: block;
-    margin: 10px 0;
-    font-weight: 600
-}
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(120deg, #00d1ff, #009dff);
+            color: #001018;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(0, 200, 255, 0.7);
+            transition: 0.3s;
+        }
 
-input[type="text"],
-input[type="email"],
-select,
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #e6e9ef;
-    border-radius: 8px;
-    font-size: 14px
-}
+        button:hover {
+            box-shadow: 0 0 35px rgba(0, 255, 255, 1);
+            background: linear-gradient(120deg, #00eaff, #00c3ff);
+        }
 
-textarea {
-    resize: vertical
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 18px;
-    background: var(--accent);
-    color: #fff;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 700;
-    margin-top: 12px
-}
-
-.status {
-    margin-top: 8px;
-    font-size: 14px
-}
-
-.status.ok {
-    color: green
-}
-
-.status.err {
-    color: #b00020
-}
-
-@media (max-width:600px) {
-    .card {
-        padding: 16px
-    }
-}
+        /* إخفاء الفئة */
+        #category {
+            display: none;
+        }
