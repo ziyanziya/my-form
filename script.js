@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbyDS3e2uJ1NpATq9OluedrQOsnGoUN5c_lxyurX5N6ddDTJrfKqP-b8Z06mju5q0s0L/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyMIk0DSqlEWHwyBaS90lK9ufg0yZ1Z_KZAv1V71GQxyG3XKAIdFCXfxxl4eFq6jkRB/exec";
 
 // حساب الفئة تلقائيًا
 document.getElementById("birthdate").addEventListener("change", function () {
@@ -38,3 +38,4 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
         console.log(err);
     });
 });
+
